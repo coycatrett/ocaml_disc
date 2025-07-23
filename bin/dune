@@ -1,0 +1,4 @@
+(executable
+ (public_name disc)
+ (name main)
+ (libraries disc))

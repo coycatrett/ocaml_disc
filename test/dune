@@ -1,0 +1,6 @@
+(test
+ (name test_disc))
+
+; (executables
+;  (names test_disc)
+;  (libraries monad))

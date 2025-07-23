@@ -1,0 +1,9 @@
+(library
+ (name lazy)
+ (modules lazy)
+ (libraries monad))
+
+(executables
+ (names test)
+ (modules test)
+ (libraries lazy))

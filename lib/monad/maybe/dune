@@ -1,0 +1,9 @@
+(library
+ (name maybe)
+ (modules maybe)
+ (libraries monad))
+
+(executables
+ (names test)
+ (modules test)
+ (libraries maybe))
