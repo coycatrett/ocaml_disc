@@ -26,6 +26,8 @@ Clflags.include_dirs :=
   ; "/home/coy/.opam/5.3.0+options/lib/zed"
   ; "/home/coy/dev/test/ocaml/disc/_build/default/lib/.disc.objs/byte"
   ; "/home/coy/dev/test/ocaml/disc/_build/default/lib/monad/.monad.objs/byte"
+  ; "/home/coy/dev/test/ocaml/disc/_build/default/lib/monad/lazy/.lazy.objs/byte"
   ; "/home/coy/dev/test/ocaml/disc/_build/default/lib/monad/maybe/.maybe.objs/byte"
+  ; "/home/coy/dev/test/ocaml/disc/_build/default/lib/monad/while/.while.objs/byte"
   ];
 UTop_main.main ();

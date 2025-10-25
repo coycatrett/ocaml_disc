@@ -1,0 +1,11 @@
+(dirs *)
+
+(library
+ (name while)
+ (modules while)
+ (libraries monad))
+
+(executables
+ (names test)
+ (modules test)
+ (libraries while))

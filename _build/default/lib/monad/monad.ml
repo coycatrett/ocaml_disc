@@ -54,7 +54,6 @@ module type Monad = sig
   (* Morphism function of U : C_T -> C where C_T is the Kleisli category of T *)
   val bind : 'a t -> ('a -> 'b t) -> 'b t
 
-  
   (* TODO
     The three monad laws:
   *)
@@ -65,29 +64,27 @@ end
 module MonadOps (M : Monad) = struct
   open M
 
-  let (>>=) = bind
-
   (** 
     Syntactic sugar:  
     let* x = a in e <=> bind a (fun x -> e) 
   *)
   let (let*) = bind
+  let (>>=) = bind
 
   let uncurr_bind : ('a -> 'b t) -> ('a t -> 'b t) = fun f -> Fun.flip bind f
 
   (* Morphism function of T, T_Mor *)
   let map : 'a t -> ('a -> 'b) -> 'b t = fun m f -> bind m (Fun.compose pure f)
-  (* Alternatively, Fun.compose pure (Fun.flip bind f) m *)
 
   let uncurr_map : ('a -> 'b) -> ('a t -> 'b t) = fun f -> uncurr_bind (Fun.compose pure f)
 
-  (* mu_a *)
+  (* 𝝁_a : TTa -> Ta *)
   let join : 'a t t -> 'a t = fun mm -> bind mm (fun m -> m)
-    (* Fun.flip bind (fun m -> m) 
-    gives error 'a t t -> _a t ???
-    *)
 
+  (* Kleisli Composition *)
   let compose : ('a -> 'b t) -> ('b -> 'c t) -> ('a -> 'c t) = fun f g -> fun x -> bind (f x) g
+
+  (* Kleisli Composition in fish infix notation *)
   let (>=>) = compose
 
   (* TODO: do notation. ask patrick *)
